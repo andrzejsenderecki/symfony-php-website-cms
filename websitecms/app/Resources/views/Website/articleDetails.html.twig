@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="card" style="width: 100%;">
+        <div class="card-header">
+            <h2>{{ article.title }}</h3>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{ article.content }}</li>
+            <li class="list-group-item">{{ article.published | date("d-m-y H:i") }}</li>
+        </ul>
+    </div>
+    <hr/>
+    <a class="btn btn-primary" href="{{ url("website_index") }}">Strona główna</a>
+{% endblock %}
