@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="card-header">
+        <a class="btn btn-primary" href="{{ url("website_index") }}">Strona główna</a>
+        </div>
+        <hr/>
+        <div class="card" style="width: 100%;">
+        <div class="card-header">
+            <h2>Edytuj artykuł</h1>
+        </div>
+        <div class="card-body">
+            {{ form(form) }}
+        </div>
+    </div>
+{% endblock %}

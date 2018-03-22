@@ -3,6 +3,10 @@
 {% block title %}Artykuły{% endblock %}
 
 {% block body %}
+    <div class="card-header">
+        <a class="btn btn-primary" href="{{ url("website_article_add") }}">Dodaj artykuł</a>
+    </div>
+    <hr/>
     <h2>Artykuły</h1>
     {% for article in articles %}
     <div class="card" style="width: 100%;">
