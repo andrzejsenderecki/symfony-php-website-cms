@@ -12,7 +12,6 @@ use AppBundle\Form\ArticleType;
 
 class WebsiteController extends Controller
 {
-
     /**
     * @Route("/", name="website_index")
     *
@@ -54,6 +53,14 @@ class WebsiteController extends Controller
 
             $article->setPublished(new \DateTime());
 
+            $file = $article->getImage();
+            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+            $file->move(
+                $this->getParameter('image_directory'),
+                $fileName
+            );
+            $article->setImage($fileName);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($article);
             $entityManager->flush();
@@ -62,6 +69,11 @@ class WebsiteController extends Controller
         }
 
         return $this->render("Website/articleAdd.html.twig", ["form" => $form->createView()]);
+    }
+
+    private function generateUniqueFileName()
+    {
+        return md5(uniqid());
     }
 
     /**
@@ -75,11 +87,18 @@ class WebsiteController extends Controller
     */
     public function EditArticleAction(Request $request, Article $article)
     {
-
         $form = $this->createForm(ArticleType::class, $article);
 
         if ($request->isMethod("post")) {
             $form->handleRequest($request);
+
+            $file = $article->getImage();
+            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+            $file->move(
+                $this->getParameter('image_directory'),
+                $fileName
+            );
+            $article->setImage($fileName);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($article);

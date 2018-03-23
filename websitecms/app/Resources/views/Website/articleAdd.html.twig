@@ -10,7 +10,11 @@
             <h2>Nowy artykuł</h1>
         </div>
         <div class="card-body">
-            {{ form(form) }}
+            {{ form_start(form) }}
+                {{ form_row(form.title) }}
+                {{ form_row(form.content) }}
+                {{ form_row(form.image) }}
+            {{ form_end(form) }}
         </div>
     </div>
 {% endblock %}

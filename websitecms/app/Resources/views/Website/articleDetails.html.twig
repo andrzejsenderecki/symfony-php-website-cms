@@ -8,6 +8,7 @@
             <a class="btn btn-primary" href="{{ url("website_article_delete", {"id": article.id}) }}">Usuń artykuł</a>
         </div>
         <hr/>
+        <img src="/uploads/images/{{ article.image}}">
         <div class="card" style="width: 100%;">
             <div class="card-header">
                 <h2>{{ article.title }}</h3>

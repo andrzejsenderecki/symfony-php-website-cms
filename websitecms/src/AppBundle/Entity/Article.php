@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Article
@@ -124,4 +125,25 @@ class Article
     {
         return $this->published;
     }
+
+    /**
+    * @ORM\Column(type="string")
+    *
+    */
+    private $image;
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+
+
 }
