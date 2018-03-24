@@ -144,6 +144,26 @@ class Article
         return $this->image;
     }
 
+    /**
+    * @var User
+    *
+    * @ORM\ManyToOne(targetEntity="User", inversedBy="article")
+    */
+    private $author;
 
+    public function setAuthor(User $author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+    * @return User
+    */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
 
 }

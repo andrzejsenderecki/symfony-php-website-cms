@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="card-header">
+        <a class="btn btn-success" href="{{ url("dashboard_article_edit", {"id": article.id}) }}">Edytuj artykuł</a>
+        <a class="btn btn-success" href="{{ url("dashboard_article_delete", {"id": article.id}) }}">Usuń artykuł</a>
+    </div>
+    <hr/>
+    <img src="/uploads/images/{{ article.image}}">
+    <div class="card" style="width: 100%;">
+        <div class="card-header">
+            <h2>{{ article.title }}</h3>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{ article.content }}</li>
+            <li class="list-group-item">{{ article.published | date("d-m-y H:i") }}</li>
+        </ul>
+    </div>
+    <hr/>
+{% endblock %}
